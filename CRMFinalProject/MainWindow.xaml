@@ -1,0 +1,140 @@
+﻿<Window
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+     xmlns:PersianCalendarWPF="clr-namespace:PersianCalendarWPF;assembly=PersianCalendarWPF"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CRMFinalProject"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        x:Class="CRMFinalProject.MainWindow"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True"
+        Title="MainWindow" Height="720" Width="1280" x:Name="Main" >
+    <Border BorderBrush="#2C74B3" BorderThickness="5" CornerRadius="10">
+        <Grid Background="#2C74B3" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Border Grid.ColumnSpan="12" Grid.RowSpan="2" BorderThickness="7" BorderBrush="#F9F5EB" CornerRadius="20" Margin="5">
+                <Rectangle Fill="#F9F5EB"/>
+            </Border>
+            <Image Grid.Column="10" Grid.ColumnSpan="2" Grid.RowSpan="2" Source="Image/Logo.png" Width="84" Height="50" HorizontalAlignment="Center" Margin="0,0,-55,0" RenderTransformOrigin="0.5,0.5" />
+            <Image  Grid.RowSpan="2" Source="Image/shutdown.png" Height="46" Margin="0,0,31,0" Width="49" Cursor="Hand" MouseLeftButtonDown="Image_MouseLeftButtonDown_Power"  />
+            <Image x:Name="image" Grid.RowSpan="2" Grid.ColumnSpan="2" Source="Image/maleuser.png" Height="49"  Margin="0,-1,49,0" Width="47" />
+            <Border Grid.Row="2" Grid.Column="9" Grid.ColumnSpan="3" Grid.RowSpan="10" BorderBrush="#CD113B" BorderThickness="7" CornerRadius="20" Margin="5">
+                <Rectangle Fill="#CD113B"/>
+            </Border>
+            <Border Grid.Row="2" Grid.ColumnSpan="3" Grid.RowSpan="3" BorderThickness="7" BorderBrush="#F9F5EB" CornerRadius="20" Margin="5">
+                <Rectangle Fill="#F9F5EB" Cursor="Hand"/>
+            </Border>
+            <Border Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="3" Grid.RowSpan="3" BorderThickness="7" BorderBrush="#F9F5EB" CornerRadius="20" Margin="5">
+                <Rectangle Fill="#F9F5EB" Cursor="Hand"/>
+            </Border>
+            <Border Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="3" Grid.RowSpan="3" BorderThickness="7" BorderBrush="#0A2463" CornerRadius="20" Margin="5">
+                <Rectangle Fill="#0A2463" Cursor="Hand"/>
+            </Border>
+            <Border Grid.Row="5" Grid.Column="6" Grid.ColumnSpan="3" Grid.RowSpan="6" BorderThickness="7" BorderBrush="#F9F5EB" CornerRadius="20" Margin="5">
+                <Rectangle Fill="#F9F5EB" Cursor="Hand"/>
+            </Border>
+            <Border Grid.Row="11" Grid.Column="6" Grid.ColumnSpan="3" Grid.RowSpan="1" BorderThickness="7" BorderBrush="#F9F5EB" CornerRadius="15" Margin="5">
+                <Rectangle Fill="#F9F5EB" Cursor="Hand"/>
+            </Border>
+            <Border Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="6" Grid.RowSpan="7" BorderThickness="7" BorderBrush="#0A2463" CornerRadius="20" Margin="5">
+                <Rectangle Fill="#0A2463" Cursor="Hand"/>
+            </Border>
+            <Border Grid.Row="5" Grid.Column="6" Grid.ColumnSpan="3" Grid.RowSpan="6"  BorderThickness="7" BorderBrush="#F9F5EB" CornerRadius="20" Margin="5">
+                <hc:PersianCalendar Style="{StaticResource MaterialDesignPersianCalendar}"   />
+            </Border>
+
+            <hc:SearchBar Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Height="35" Margin="5" FontFamily="Yekan.tff" FontSize="14" TextAlignment="Center" />
+            <local:ClockMainWindow Grid.Row="11" Grid.Column="6" Grid.ColumnSpan="3" Grid.RowSpan="1" />
+
+            <TextBlock Style="{StaticResource TxtWhiteMedium}" Text="تعداد مشتریان" Grid.Column="6" Grid.ColumnSpan="3" Grid.Row="2" FontSize="30" Margin="0,30,-8,0" />
+            <Image Style="{StaticResource ImgRow3Icon}" Source="Image/people.png" Grid.Column="6"  Grid.RowSpan="2" Margin="0,18,57,48" />
+            <TextBlock Style="{StaticResource  TxtWhiteBold}" Text="452" Grid.Column="6" Grid.ColumnSpan="3" Grid.Row="3" Grid.RowSpan="2"  FontSize="65"  Margin="0,15,65,0" />
+
+            <TextBlock Style="{StaticResource TxtBlueMedium}" Text="فروش های امروز" Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="2" FontSize="30"  Margin="0,30,0,0" />
+            <Image Style="{StaticResource ImgRow3Icon}" Source="Image/dollar.png" Grid.Column="3"  Grid.RowSpan="2"  Margin="0,18,79,48" />
+            <TextBlock Style="{StaticResource TxtBlueBold}" Text="52" Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="3" Grid.RowSpan="2"  FontSize="65"  Margin="0,15,46,0" />
+
+            <TextBlock Style="{StaticResource TxtBlueMedium}" Text="یادآور" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2"  FontSize="30"  Margin="0,30,0,0" />
+            <Image Style="{StaticResource ImgRow3Icon}" Source="Image/alarm.png" Grid.Column="0"  Grid.RowSpan="2"  Margin="0,18,98,48" />
+            <TextBlock Style="{StaticResource TxtBlueBold}" Text="3" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="3" Grid.RowSpan="2" FontSize="65" Margin="0,15,51,0" />
+
+            <TextBlock Style="{DynamicResource TxtWhiteBold}" Text="مدیریت ارتباط با مشتریان" FontSize="28" Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="2" VerticalAlignment="Center" Margin="0,28,0,0" />
+
+            <WrapPanel Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,60,-6,0" Cursor="Hand" MouseLeftButtonDown="WrapPanel_MouseLeftButtonDown_Customer"  >
+                <TextBlock Style="{DynamicResource TxtWhiteMedium}" Text="مدیریت مشتریان" VerticalAlignment="Center" FontSize="24" />
+                <Image Source="Image/people.png" Height="45"/>
+            </WrapPanel>
+
+            <WrapPanel Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="3" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,60,-6,0" Cursor="Hand" MouseLeftButtonDown="WrapPanel_MouseLeftButtonDown_Product"   >
+                <TextBlock Style="{DynamicResource TxtWhiteMedium}" FontFamily="Yekan" Text="مدیریت کالا ها" VerticalAlignment="Center" FontSize="24" />
+                <Image Source="Image/cart.png" Height="45"/>
+            </WrapPanel>
+
+            <WrapPanel Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="4" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,60,-6,0" Cursor="Hand" MouseLeftButtonDown="WrapPanel_MouseLeftButtonDown_Invoice"    >
+                <TextBlock Style="{DynamicResource TxtWhiteMedium}" FontFamily="Yekan" Text="مدیریت فاکتور ها" VerticalAlignment="Center" FontSize="24" />
+                <Image Source="Image/invoice.png" Height="45"/>
+            </WrapPanel>
+
+            <WrapPanel Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="5" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,60,-6,0" Cursor="Hand" MouseLeftButtonDown="WrapPanel_MouseLeftButtonDown_Activity"  >
+                <TextBlock Style="{DynamicResource TxtWhiteMedium}" FontFamily="Yekan" Text="فعالیت ها" VerticalAlignment="Center" FontSize="24" />
+                <Image Source="Image/iconcalendar.png" Height="45"/>
+            </WrapPanel>
+
+            <WrapPanel Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="6" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,60,-6,0" Cursor="Hand" MouseLeftButtonDown="WrapPanel_MouseLeftButtonDown_Reminder"  >
+                <TextBlock Style="{DynamicResource TxtWhiteMedium}" FontFamily="Yekan" Text="یادآور ها" VerticalAlignment="Center" FontSize="24" />
+                <Image Source="Image/alarmwhite.png" Height="45"/>
+            </WrapPanel>
+
+            <WrapPanel Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="7" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,60,-6,0" Cursor="Hand"  MouseLeftButtonDown="WrapPanel_MouseLeftButtonDown_SmsPanel">
+                <TextBlock Style="{DynamicResource TxtWhiteMedium}" FontFamily="Yekan" Text="پنل پیامکی" VerticalAlignment="Center" FontSize="24" />
+                <Image Source="Image/chat.png" Height="45"/>
+            </WrapPanel>
+
+            <WrapPanel Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="8" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,60,-6,0" Cursor="Hand"  >
+                <TextBlock Style="{DynamicResource TxtWhiteMedium}" FontFamily="Yekan" Text="گزارشات" VerticalAlignment="Center" FontSize="24" />
+                <Image Source="Image/report.png" Height="45"/>
+            </WrapPanel>
+
+            <WrapPanel Grid.Column="9" Grid.ColumnSpan="3" Grid.Row="9" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,60,-6,0" Cursor="Hand"  >
+                <TextBlock Style="{DynamicResource TxtWhiteMedium}" FontFamily="Yekan" Text="تنظیمات" VerticalAlignment="Center" FontSize="24" />
+                <Image Source="Image/settings.png" Height="45"/>
+            </WrapPanel>
+            
+            
+            
+        </Grid>
+    </Border>
+</Window>
