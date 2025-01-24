@@ -46,22 +46,39 @@ namespace DAL
             sqladaptor.Fill(ds);
             return ds.Tables[0];
         }
-        public DataTable Read(string s)//for search
+        /*  public DataTable Read(string s)//for search
+          {
+              SqlConnection con = new SqlConnection("Data Source=.;Initial Catalog=CRMFinal;Integrated Security=true");
+              SqlCommand cmd = new SqlCommand();
+              cmd.CommandText = "dbo.SearchProduct";
+              cmd.CommandType = CommandType.StoredProcedure;
+              cmd.Parameters.AddWithValue("@search", s);
+              cmd.Connection = con;
+
+              var sqladaptor = new SqlDataAdapter();
+              sqladaptor.SelectCommand = cmd;
+              var commandbuilder = new SqlCommandBuilder(sqladaptor);
+              var ds = new DataSet();
+              sqladaptor.Fill(ds);
+              return ds.Tables[0];
+          }*/
+        public DataTable Read(string s)
         {
             SqlConnection con = new SqlConnection("Data Source=.;Initial Catalog=CRMFinal;Integrated Security=true");
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "dbo.SearchProduct";
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@search", s);
+
+            cmd.CommandText = "SELECT   Name AS [نام محصول], Price AS [قیمت محصول],  Stock AS [موجودی] FROM Products WHERE Nmae LIKE @search OR id LIKE @search";
+            cmd.Parameters.AddWithValue("@search", "%" + s + "%");
             cmd.Connection = con;
 
             var sqladaptor = new SqlDataAdapter();
             sqladaptor.SelectCommand = cmd;
-            var commandbuilder = new SqlCommandBuilder(sqladaptor);
             var ds = new DataSet();
             sqladaptor.Fill(ds);
+
             return ds.Tables[0];
         }
+
         public Product Read(int id)//for update and delete
         {
             return db.Products.Where(i => i.Id == id).FirstOrDefault();

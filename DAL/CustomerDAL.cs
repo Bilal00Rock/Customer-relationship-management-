@@ -46,34 +46,65 @@ namespace DAL
             sqladaptor.Fill(ds);
             return ds.Tables[0];
         }
+        /* public DataTable Read(string s, int index)
+         {
+             SqlConnection con = new SqlConnection("Data Source=.;Initial Catalog=CRMFinal;Integrated Security=true");
+             SqlCommand cmd = new SqlCommand();
+             if (index == 0)
+             {
+                 cmd.CommandText = "dbo.SearchCustomer";
+             }
+             else if (index == 1)
+             {
+                 cmd.CommandText = "dbo.SearchCustomerName";
+             }
+             else if (index == 2)
+             {
+                 cmd.CommandText = "dbo.SearchCustomerPhone";
+             }
+
+             cmd.CommandType = CommandType.StoredProcedure;
+             cmd.Parameters.AddWithValue("@search", s);
+             cmd.Connection = con;
+
+             var sqladaptor = new SqlDataAdapter();
+             sqladaptor.SelectCommand = cmd;
+             var commandbuilder = new SqlCommandBuilder(sqladaptor);
+             var ds = new DataSet();
+             sqladaptor.Fill(ds);
+             return ds.Tables[0];
+         }*/
         public DataTable Read(string s, int index)
         {
             SqlConnection con = new SqlConnection("Data Source=.;Initial Catalog=CRMFinal;Integrated Security=true");
             SqlCommand cmd = new SqlCommand();
-            if (index == 0)
+
+            switch (index)
             {
-                cmd.CommandText = "dbo.SearchCustomer";
+                case 0:
+                    cmd.CommandText = "SELECT Name AS [نام مشتری], PhoneNumber AS [شماره تماس],FORMAT(RegDate, 'hh:mm tt M/d/yyyy') AS [تاریخ ثبت] FROM Customers WHERE Name LIKE @search";
+                    break;
+                case 1:
+                    cmd.CommandText = "SELECT  Name AS [نام مشتری], PhoneNumber AS [شماره تماس],FORMAT(RegDate, 'hh:mm tt M/d/yyyy') AS [تاریخ ثبت] FROM Customers WHERE Name LIKE @search";
+                    break;
+                case 2:
+                    cmd.CommandText = "SELECT  Name AS [نام مشتری], PhoneNumber AS [شماره تماس],FORMAT(RegDate, 'hh:mm tt M/d/yyyy') AS [تاریخ ثبت] FROM Customers WHERE PhoneNumber LIKE @search";
+                    break;
+                default:
+                    throw new ArgumentException("Invalid index value.");
             }
-            else if (index == 1)
-            {
-                cmd.CommandText = "dbo.SearchCustomerName";
-            }
-            else if (index == 2)
-            {
-                cmd.CommandText = "dbo.SearchCustomerPhone";
-            }
-            
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@search", s);
+
+            cmd.Parameters.AddWithValue("@search", "%" + s + "%");
             cmd.Connection = con;
-            
+
             var sqladaptor = new SqlDataAdapter();
             sqladaptor.SelectCommand = cmd;
-            var commandbuilder = new SqlCommandBuilder(sqladaptor);
             var ds = new DataSet();
             sqladaptor.Fill(ds);
+
             return ds.Tables[0];
         }
+
         public Customer Read(int id)
         {
             return db.Customers.Where(i => i.Id == id).FirstOrDefault();
